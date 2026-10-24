@@ -1,0 +1,438 @@
+{
+  "schema_version": 1,
+  "run_id": "50b40c1d-b0de-4e27-a6c6-da7bf68d335a",
+  "started_at": "2026-10-24T01:36:40.013636+00:00",
+  "finished_at": "2026-10-24T01:36:40.015063+00:00",
+  "simulated": true,
+  "measurement_source": "synthetic simulator inputs; no physical hardware",
+  "identity": {
+    "device_id": "SIM-001",
+    "firmware_version": "sim-0.1.0",
+    "protocol_version": 1,
+    "simulated": true,
+    "model": "defective-boundary"
+  },
+  "test_software": {
+    "version": "0.1.0",
+    "revision": "992905d382e87bf8ae7f61a12a3a04f69b9139ee",
+    "dirty": false
+  },
+  "status": "FAIL",
+  "summary": {
+    "PASS": 25,
+    "FAIL": 2,
+    "ERROR": 0
+  },
+  "results": [
+    {
+      "test": "identity",
+      "requirement": "REQ-001",
+      "required": true,
+      "status": "PASS",
+      "expected": [
+        "SIM-001",
+        "sim-0.1.0",
+        1,
+        true
+      ],
+      "observed": [
+        "SIM-001",
+        "sim-0.1.0",
+        1,
+        true
+      ],
+      "failure_reason": null,
+      "duration_s": 7.277899999280635e-05
+    },
+    {
+      "test": "valid_config",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": 16.0,
+      "observed": 16.0,
+      "failure_reason": null,
+      "duration_s": 3.6113999954068277e-05
+    },
+    {
+      "test": "normal_telemetry",
+      "requirement": "REQ-003",
+      "required": true,
+      "status": "PASS",
+      "expected": [
+        12.0,
+        25.0,
+        "NORMAL",
+        true
+      ],
+      "observed": [
+        12.0,
+        25.0,
+        "NORMAL",
+        true
+      ],
+      "failure_reason": null,
+      "duration_s": 5.52839999841126e-05
+    },
+    {
+      "test": "voltage_boundary",
+      "requirement": "REQ-004",
+      "required": true,
+      "status": "FAIL",
+      "expected": [
+        "NORMAL",
+        "FAULT"
+      ],
+      "observed": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "failure_reason": "Observed value differs from requirement expectation",
+      "duration_s": 3.316999999469772e-05
+    },
+    {
+      "test": "temperature_boundary",
+      "requirement": "REQ-004",
+      "required": true,
+      "status": "FAIL",
+      "expected": [
+        "NORMAL",
+        "FAULT"
+      ],
+      "observed": [
+        "NORMAL",
+        "NORMAL"
+      ],
+      "failure_reason": "Observed value differs from requirement expectation",
+      "duration_s": 2.9283999992912868e-05
+    },
+    {
+      "test": "hysteresis_recovery",
+      "requirement": "REQ-005",
+      "required": true,
+      "status": "PASS",
+      "expected": [
+        "FAULT",
+        "FAULT",
+        "RECOVERY",
+        "FAULT",
+        "RECOVERY",
+        "NORMAL"
+      ],
+      "observed": [
+        "FAULT",
+        "FAULT",
+        "RECOVERY",
+        "FAULT",
+        "RECOVERY",
+        "NORMAL"
+      ],
+      "failure_reason": null,
+      "duration_s": 8.214400003225819e-05
+    },
+    {
+      "test": "retrip_during_recovery",
+      "requirement": "REQ-005",
+      "required": true,
+      "status": "PASS",
+      "expected": [
+        "FAULT",
+        "RECOVERY",
+        "FAULT"
+      ],
+      "observed": [
+        "FAULT",
+        "RECOVERY",
+        "FAULT"
+      ],
+      "failure_reason": null,
+      "duration_s": 3.9078999975572515e-05
+    },
+    {
+      "test": "reset_volatile_config",
+      "requirement": "REQ-006",
+      "required": true,
+      "status": "PASS",
+      "expected": [
+        {
+          "reset": true,
+          "config_persisted": false
+        },
+        15.0,
+        "NORMAL"
+      ],
+      "observed": [
+        {
+          "reset": true,
+          "config_persisted": false
+        },
+        15.0,
+        "NORMAL"
+      ],
+      "failure_reason": null,
+      "duration_s": 6.162300002188204e-05
+    },
+    {
+      "test": "invalid_config_voltage_low",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.812200000969824e-05
+    },
+    {
+      "test": "invalid_config_voltage_high",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.565900002262424e-05
+    },
+    {
+      "test": "invalid_config_temperature_low",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 7.083700000976023e-05
+    },
+    {
+      "test": "invalid_config_temperature_high",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.38569999801075e-05
+    },
+    {
+      "test": "invalid_config_zero_hysteresis",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 3.979000001663735e-05
+    },
+    {
+      "test": "invalid_config_large_hysteresis",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.020100004709093e-05
+    },
+    {
+      "test": "invalid_config_temperature_hysteresis",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 0.0002682349999645339
+    },
+    {
+      "test": "invalid_config_temperature_floor",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.8663000029591785e-05
+    },
+    {
+      "test": "invalid_config_boolean",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.225400004997937e-05
+    },
+    {
+      "test": "invalid_config_string",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.2213999961404625e-05
+    },
+    {
+      "test": "invalid_config_unknown_key",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 4.0341000044463726e-05
+    },
+    {
+      "test": "invalid_config_empty",
+      "requirement": "REQ-002",
+      "required": true,
+      "status": "PASS",
+      "expected": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "observed": {
+        "code": "INVALID_CONFIG",
+        "unchanged": true
+      },
+      "failure_reason": null,
+      "duration_s": 3.681599997662488e-05
+    },
+    {
+      "test": "malformed",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 3.3369999982824083e-05
+    },
+    {
+      "test": "incomplete",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 1.5714000028310693e-05
+    },
+    {
+      "test": "oversized",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 1.2007999998786545e-05
+    },
+    {
+      "test": "wrong_id",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 1.4050999993742153e-05
+    },
+    {
+      "test": "wrong_version",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 1.278899998169436e-05
+    },
+    {
+      "test": "bad_envelope",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 1.171700000668352e-05
+    },
+    {
+      "test": "timeout",
+      "requirement": "REQ-007",
+      "required": true,
+      "status": "PASS",
+      "expected": "rejected",
+      "observed": "rejected",
+      "failure_reason": null,
+      "duration_s": 8.321999985128059e-06
+    }
+  ]
+}
