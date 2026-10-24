@@ -1,0 +1,39 @@
+name: simulation checks
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e '.[dev]'
+      - run: python -m ruff check .
+      - run: python -m pytest
+      - name: Normal and intentional defect demonstrations
+        shell: bash
+        run: |
+          python -m energy_station.cli --report reports/normal.json
+          set +e
+          python -m energy_station.cli --scenario defective --report reports/defective.json
+          code=$?
+          set -e
+          test "$code" -eq 1
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          normal = json.loads(Path('reports/normal.json').read_text())
+          mutant = json.loads(Path('reports/defective.json').read_text())
+          assert normal['status'] == 'PASS'
+          assert mutant['summary']['ERROR'] == 0
+          assert {r['test'] for r in mutant['results'] if r['status'] == 'FAIL'} == {'voltage_boundary', 'temperature_boundary'}
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: simulation-reports-${{ matrix.python }}
+          path: reports/
