@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Incidental local simulation runs; curated examples are tracked separately
+reports/
